@@ -1,0 +1,22 @@
+body{
+  position: absolute;
+  display: flex;
+  top: 0; bottom: 0; left: 0; right: 0;
+  background-color: #212121;
+}
+
+#containerLayers{
+  width: 1122px; height: 860px;
+  position: relative;
+  margin:auto;
+  border: 1px solid black;
+}
+
+.layer{
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+}
+
+.layer#map{
+  background:url('../mediaLib/rpgmaker/MapaSi.png');
+}
