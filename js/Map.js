@@ -5,13 +5,5 @@ var Map = function(widthTile, heightTile, horizontalTiles, verticalTiles, path){
   this.horizontalTiles = horizontalTiles;
   this.verticalTiles = verticalTiles;
   this.path = path;
-
-  this.checkPath = function(xTile, yTile) {
-    for (var i=0; i<this.path.length; i++) {
-      if ( xTile==this.path[i][0] && yTile==this.path[i][1] )
-        return true;
-    }
-    return false;
-  }
-
+  
 };

@@ -8,24 +8,24 @@ function start(){
 
   painter = new Painter($("#cv")[0]);
   path = [
-    [4,3],[5,3],[6,3],[7,3],[8,3],[9,3],[10,3],[11,3],
-    [4,5],[5,5],[6,5],[7,5],[8,5],[9,5],[10,5],[11,5], 
-    [0,7],[1,7],[2,7],[3,7],[4,7],[5,7],[6,7],[7,7],[8,7],[9,7],[10,7],[11,7],[12,7],[13,7],[14,7],[15,7],[16,7],
-    [8,9],[9,9],[10,9],[11,9],[12,9],[13,9],
-    [11,10],[12,10],[13,10],
-    [11,11],[12,11],[13,11],
-    [4,1],[4,2],[4,4],[4,6],
-    [8,4],[8,6],
-    [10,6],
-    [11,1],[11,2],[11,4],
-    [6,8],[6,9],[6,10],
-    [8,8],[8,10],
-    [6,11],[7,11]
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0],
+    [0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0],
+    [0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0],
+    [0,0,0,0,1,0,0,0,1,0,0,1,0,0,0,0,0],
+    [0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0],
+    [0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0],
+    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+    [0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,1,0,1,1,1,1,1,1,0,0,0],
+    [0,0,0,0,0,0,1,0,1,0,0,1,1,1,0,0,0],
+    [0,0,0,0,0,0,1,1,0,0,0,1,1,1,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
   ];
   map = new Map(66, 66, 17, 13, path);
   
   images = getImagesCharacter('mediaLib/opengameart/characters/humans/', 'GuyLight', 'png');
-  human = new Character(images, map, 0, 8, 6);
+  human = new Character(images, map, 1, 8, 6);
 
   zombies = [];
   exitsZombies = [[0,7], [4,1], [11,1], [16,7]];
@@ -103,14 +103,14 @@ function createZombies(){
     i = Math.round((Math.random()*3));
     zombies.push(new Character(images, map, 0, exitsZombies[i][0], exitsZombies[i][1]));
     j = Math.round((Math.random()*(3-1)+1));
-    setTimeout(function(){audios[j].play()}, 50);
+    setTimeout(function(){audios[j].play()}, 100);
   }
   setTimeout(createZombies, 10000);
 }
 
 function playAudioPrincipal(){
   if(stateGame && (tiempo%64)==1) {
-    setTimeout(function(){audios[0].play()}, 50);
+    setTimeout(function(){audios[0].play()}, 100);
   }
   setTimeout(playAudioPrincipal, 1000);
 }

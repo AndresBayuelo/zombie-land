@@ -18,25 +18,25 @@ function Character(images, map, sprite, xTile, yTile){
 Character.prototype.run = function(event, targets = []){
 
   if (event == "down") {
-    if (this.map.checkPath(this.xTile, this.yTile + 1)) {
+    if (this.map.path[this.yTile+1][this.xTile]) {
       this.yTile += 1;
       this.sprite = 0;
     }
   }
   if (event == "up") {
-    if (this.map.checkPath(this.xTile, this.yTile - 1)) {
+    if (this.map.path[this.yTile-1][this.xTile]) {
       this.yTile -= 1;
       this.sprite = 1;
     }
   }
   if (event == "left") {
-    if (this.map.checkPath(this.xTile - 1, this.yTile)) {
+    if (this.map.path[this.yTile][this.xTile-1]) {
       this.xTile -= 1;
       this.sprite = 2;
     }
   }
   if (event == "right") {
-    if (this.map.checkPath(this.xTile + 1, this.yTile)) {
+    if (this.map.path[this.yTile][this.xTile+1]) {
       this.xTile += 1;
       this.sprite = 3;
     }
@@ -52,7 +52,7 @@ Character.prototype.run = function(event, targets = []){
 Character.prototype.followTarget = function(target) {
 
   if(target.yTile>this.yTile) {
-    if (this.map.checkPath(this.xTile, this.yTile + 1)){
+    if (this.map.path[this.yTile+1][this.xTile]){
       this.yTile += 1;
       this.sprite = 0;
       return this.targetReached(target);
@@ -60,7 +60,7 @@ Character.prototype.followTarget = function(target) {
   }
 
   if(target.yTile<this.yTile) {
-    if (this.map.checkPath(this.xTile, this.yTile - 1)){
+    if (this.map.path[this.yTile-1][this.xTile]){
       this.yTile -= 1;
       this.sprite = 1;
       return this.targetReached(target);
@@ -68,7 +68,7 @@ Character.prototype.followTarget = function(target) {
   }
 
   if(target.xTile>this.xTile) {
-    if (this.map.checkPath(this.xTile + 1, this.yTile)) {
+    if (this.map.path[this.yTile][this.xTile+1]) {
       this.xTile += 1;
       this.sprite = 3;
       return this.targetReached(target);
@@ -76,7 +76,7 @@ Character.prototype.followTarget = function(target) {
   }
 
   if(target.xTile<this.xTile) {
-    if (this.map.checkPath(this.xTile - 1, this.yTile)) {
+    if (this.map.path[this.yTile][this.xTile-1]) {
       this.xTile -= 1;
       this.sprite = 2;
       return this.targetReached(target);
