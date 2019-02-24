@@ -83,6 +83,7 @@ function end(){
   audios[0].pause();
   audios[0].currentTime = 0;
   alert("Perdiste " + player + "!\nTu puntaje fue " + (tiempo*100));
+  sendAJAX(url, {jugador:player,puntaje:(tiempo*100)})
   if (confirm("Intentarlo de nuevo!")) {
     zombies = [];
     stateGame = true;
